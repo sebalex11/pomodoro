@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css?family=Baloo+Bhaina|Hammersmith+One|Pacifico|Open+Sans");
+body {
+  background-color: #363E44;
+  color: #AFC9DD; }
+
+#header {
+  font-family: "Baloo Bhaina", "Pacifico", "Open Sans", sans-serif;
+  letter-spacing: 10px;
+  font-size: 60px;
+  text-align: center; }
+
+#content {
+  font-family: "Open Sans", sans-serif;
+  letter-spacing: 3px; }
+
+#break {
+  float: left;
+  margin-left: 30%;
+  margin-right: 10%; }
+
+#time {
+  float: left; }
+
+.select {
+  font-size: 50px;
+  vertical-align: middle; }
+
+button {
+  background-color: #363E44;
+  color: #AFC9DD;
+  border: solid 2px #738490;
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+  font-size: 25px;
+  vertical-align: middle; }
+  button:hover {
+    background-color: #738490;
+    cursor: pointer; }
+
+/*# sourceMappingURL=style.css.map */
