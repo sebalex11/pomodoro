@@ -16,7 +16,7 @@ body {
 #break {
   float: left;
   margin-left: 30%;
-  margin-right: 10%; }
+  margin-right: 15%; }
 
 #time {
   float: left; }
@@ -37,5 +37,20 @@ button {
   button:hover {
     background-color: #738490;
     cursor: pointer; }
+
+circle {
+  fill: #363E44;
+  position: absolute;
+  stroke: #AFC9DD;
+  stroke-width: 5px;
+  stroke-dashoffset: 0;
+  stroke-dasharray: 189; }
+
+text {
+  fill: #AFC9DD; }
+
+#pomo {
+  display: block;
+  margin: auto; }
 
 /*# sourceMappingURL=style.css.map */

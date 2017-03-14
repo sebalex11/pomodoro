@@ -7,7 +7,7 @@ $(function(){
 		var setting = $pressed.parent();
 		var section = $pressed.attr("data-div");
 		var $span = $("#"+section+" > span");
-		var tempNum = parseInt($span.html()) 
+		var tempNum = parseInt($span.html());
 
 		if($pressed.attr("data-sign") == "-" && tempNum > 1){
 			tempNum--;
@@ -19,5 +19,15 @@ $(function(){
 
 	}
 
+	var start = function(){
+
+	};
+
+	var timeConvert = function(min, sec){
+		var tempMin;
+		var tempSec;
+	};
+
 	$("button").on("click", settingChange);
+
 })

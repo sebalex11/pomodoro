@@ -24,7 +24,7 @@ body {
 #break{
 	float: left;
 	margin-left: 30%;
-	margin-right: 10%;
+	margin-right: 15%;
 }
 #time{
 	float: left;
@@ -46,4 +46,20 @@ button{
 		background-color: $mediumColor;
 		cursor: pointer;
 	}
+}
+
+circle{
+	fill: $charcoal;
+	position: absolute;
+	stroke: $lightColor;
+	stroke-width: 5px;
+	stroke-dashoffset: 0;
+	stroke-dasharray: 189;
+}
+text{
+	fill: $lightColor;
+}
+#pomo {
+	display: block;
+	margin: auto;
 }
