@@ -18,14 +18,14 @@
 		
 		<div id="settings">
 			<div id="break">
-				<h1>Total time</h1>
+				<h1>Break time</h1>
 				<button data-div="break" data-sign="-" class="btn">-</button>
 				<span data-div="break" class="select" id="breakDisplay">5</span>
 				<button data-div="break" data-sign="+" class="btn">+</button>
 			</div>
 
 			<div id="time">
-				<h1>Total time</h1>
+				<h1>Work time</h1>
 				<button data-div="time" data-sign="-" class="btn">-</button>
 				<span data-div="time" class="select" id="timeDisplay">25</span>
 				<button data-div="time" data-sign="+" class="btn">+</button>
@@ -34,9 +34,9 @@
 		
 		<div id="clock">
 			<svg id="pomo" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-  				<g>
+  				<g id="clockButton">
 					<circle cx="100" cy="35" r="30" />
-					<text x="50%" y="20%" text-anchor="middle">25:00</text>
+					<text id="clockText" x="50%" y="20%" text-anchor="middle">25:00</text>
 				</g>
 			</svg>
 		</div>
