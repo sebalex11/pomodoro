@@ -1,6 +1,8 @@
 $(function(){
 	const minute = 60;
 	var timerOn = false;
+	var intTime;
+	var timeStatus = false;
 
 
 //this gives functionality to the buttons for the clock settings
@@ -23,25 +25,76 @@ $(function(){
 
 	}
 
-	var start = function(){
+//make sure that each number always has 2 digits
+	var numCheck = function(val){
+
+		if(val < 10) {
+			return ("0"+val);
+		} else {
+			return val;
+		}
 
 	};
 
 //UNFINISHED    this will convert the time when it passes 0 seconds
-	var timeConvert = function(min, sec){
-		var tempMin;
-		var tempSec;
+	var timeConvert = function(){
+		console.log($("#clockText").html());
+		var currentTime = $("#clockText").html().split(":");
+		var tempMin = parseInt(currentTime[0]);
+		var tempSec = parseInt(currentTime[1]) - 1;
+
+
+
+		if(timeStatus == true){
+			breakSwitch();
+			timeStatus = false;
+			return;
+		};
+
+
+		switch(true){
+			case tempMin == 0 && tempSec == 0:
+				console.log("ALL DONE");
+				timeStatus = true
+				break;
+			case tempSec == -1:
+				tempSec = 59;
+				tempMin -= 1;
+				break;
+			};
+
+		$("#clockText").html(numCheck(tempMin)+":"+numCheck(tempSec))
+
 	};
 
+
+//this is the function to reset the clock for the break period
+	var breakSwitch = function(){
+		
+		var breakTime = ($("#breakDisplay").html()+":00");
+		$("#clockText").html(breakTime);
+	}
+
+//this will start the number countdown
+	var countDown = function(bool){
+		if (bool == true){
+			intTime = setInterval(timeConvert,1000);
+	}	
+		else {
+			clearInterval(intTime);
+		}
+	};
 
 //this will check the state of the clock and use the correct function
 	var timerStartCheck = function(){
 		if (timerOn == false){
 			;
 			timerOn = true;
+			countDown(true);
 		}
 		else{
 			timerOn = false;
+			countDown(false);
 		}
 	}
 
