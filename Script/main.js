@@ -1,9 +1,9 @@
 $(function(){
-	const minute = 60;
 	var timerOn = false;
 	var intTime;
 	var timeStatus = "work";
 	var clockRestart = true;
+	var audio = new Audio("tone.wav")
 
 
 //this gives functionality to the buttons for the clock settings
@@ -19,7 +19,7 @@ $(function(){
 		if($pressed.attr("data-sign") == "-" && tempNum > 1){
 			tempNum--;
 			$span.html(tempNum);
-		} else if($pressed.attr("data-sign") == "+" && tempNum >= 1){
+		} else if($pressed.attr("data-sign") == "+"){
 			tempNum++;
 			$span.html(tempNum);
 		}
@@ -72,7 +72,8 @@ var colorChanger = function(status, notstatus){
 
 		switch(true){
 			case tempMin == 0 && tempSec == 0:
-				breakSwitch()
+				breakSwitch();
+				audio.play();
 				break;
 			case tempSec == -1:
 				tempSec = 59;
