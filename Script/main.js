@@ -2,7 +2,8 @@ $(function(){
 	const minute = 60;
 	var timerOn = false;
 	var intTime;
-	var timeStatus = false;
+	var timeStatus = "work";
+	var clockRestart = true;
 
 
 //this gives functionality to the buttons for the clock settings
@@ -36,26 +37,42 @@ $(function(){
 
 	};
 
-//UNFINISHED    this will convert the time when it passes 0 seconds
+//This will highight the color for whichever mode it is in <------------------------------------------------- FINISH THIS AND ADD SOUND AFTER
+var colorChanger = function(status, notstatus){
+
+}
+
+//This runs for every second recreating the html for the clock display
 	var timeConvert = function(){
 		console.log($("#clockText").html());
 		var currentTime = $("#clockText").html().split(":");
 		var tempMin = parseInt(currentTime[0]);
 		var tempSec = parseInt(currentTime[1]) - 1;
+		console.log(timeStatus)
 
 
 
-		if(timeStatus == true){
-			breakSwitch();
-			timeStatus = false;
-			return;
-		};
+	//This is the function that runs at 0 to switch from WORK to BREAK
+		var breakSwitch = function(){
+			
+			var breakTime = $("#breakDisplay").html();
+			var workTime =  $("#workDisplay").html();
+			
+			if(timeStatus == "work"){
+			tempMin = breakTime;
+			timeStatus = "break";
+			console.log("BREAK TIME")				
+			} else { 
+			console.log("WORK TIME")
+			tempMin = workTime;
+			timeStatus = "work";
+			};
 
+		}
 
 		switch(true){
 			case tempMin == 0 && tempSec == 0:
-				console.log("ALL DONE");
-				timeStatus = true
+				breakSwitch()
 				break;
 			case tempSec == -1:
 				tempSec = 59;
@@ -67,29 +84,26 @@ $(function(){
 
 	};
 
-
-//this is the function to reset the clock for the break period
-	var breakSwitch = function(){
-		
-		var breakTime = ($("#breakDisplay").html()+":00");
-		$("#clockText").html(breakTime);
-	}
-
-//this will start the number countdown
+//This will start the number countdown
 	var countDown = function(bool){
 		if (bool == true){
 			intTime = setInterval(timeConvert,1000);
+			$("circle").css("stroke","#AFC9DD")
 	}	
 		else {
 			clearInterval(intTime);
+			$("circle").css("stroke","#E1AA7A")
 		}
 	};
 
-//this will check the state of the clock and use the correct function
+//This will check the state of the clock and use the correct function
 	var timerStartCheck = function(){
 		if (timerOn == false){
-			;
 			timerOn = true;
+			if(clockRestart == true){
+				$("#clockText").html(numCheck($("#workDisplay").html())+":00");
+				clockRestart = false;
+			};
 			countDown(true);
 		}
 		else{
@@ -98,22 +112,9 @@ $(function(){
 		}
 	}
 
-//this is to start the functions of the clock
-	var clockFunctions = function(){
-		
-		var startTime = $("#timeDisplay").html();
-
-
-
-		timerStartCheck();
-
-
-	};
-
-
 //Events
 	$("button").on("click", settingChange);
 
 
-	$("#clockButton").on("click", clockFunctions);
+	$("#clockButton").on("click", timerStartCheck);
 })
