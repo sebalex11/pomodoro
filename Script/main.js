@@ -3,8 +3,10 @@ $(function(){
 	var intTime;
 	var timeStatus = "work";
 	var clockRestart = true;
-	var audio = new Audio("tone.wav")
+	var audio = new Audio("tone.wav");
 
+	var $workSign = $("#time > h1");
+	var $breakSign = $("#break > h1");
 
 //this gives functionality to the buttons for the clock settings
 	var settingChange = function(){
@@ -61,11 +63,19 @@ var colorChanger = function(status, notstatus){
 			if(timeStatus == "work"){
 			tempMin = breakTime;
 			timeStatus = "break";
+
+			$breakSign.css("text-decoration", "underline");
+			$workSign.css("text-decoration", "none");
+
 			console.log("BREAK TIME")				
 			} else { 
 			console.log("WORK TIME")
 			tempMin = workTime;
 			timeStatus = "work";
+
+			$workSign.css("text-decoration", "underline");
+			$breakSign.css("text-decoration", "none");
+
 			};
 
 		}
