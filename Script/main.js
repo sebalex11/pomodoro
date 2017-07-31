@@ -123,9 +123,21 @@ var colorChanger = function(status, notstatus){
 		}
 	}
 
+
+//This will "restart" the timer when you click the button
+
+var restartTimer = function(){
+	$("#clockText").html(numCheck($("#workDisplay").html())+":00");
+	timeStatus = "work"
+	$workSign.css("text-decoration", "underline");
+	$breakSign.css("text-decoration", "none");
+}
+
 //Events
 	$("button").on("click", settingChange);
 
 
 	$("#clockButton").on("click", timerStartCheck);
+
+	$("#restart").on("click", restartTimer)
 })
