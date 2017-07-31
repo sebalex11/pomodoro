@@ -67,3 +67,11 @@ text{
 #time h1{
 	text-decoration: underline;
 }
+
+#restart {
+	text-align: center;
+	margin-top: -65%;
+	&:hover{
+		background-color: $mediumColor;
+	}
+}
